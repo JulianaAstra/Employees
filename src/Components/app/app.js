@@ -14,18 +14,15 @@ const FilterType = {
     SALARY: 'salary'
 }
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            data : [
-                {name: 'John B.', salary: 800, id: 1, increase: true, rise: true},
-                {name: 'Ann C.', salary: 5000, id: 2, increase: true, rise: false},
-                {name: 'Kate R.', salary: 1700, id: 3, increase: false, rise: true}
-            ],
-            term: '',
-            filter: 'all'
-        }
+    
+    state = {
+        data : [
+            {name: 'John B.', salary: 800, id: 1, increase: true, rise: true},
+            {name: 'Ann C.', salary: 5000, id: 2, increase: true, rise: false},
+            {name: 'Kate R.', salary: 1700, id: 3, increase: false, rise: true}
+        ],
+        term: '',
+        filter: 'all'
     }
     
     onToggleProp = (id, prop) => {

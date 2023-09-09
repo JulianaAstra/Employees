@@ -2,13 +2,9 @@ import './employees-add-form.scss';
 import { Component } from 'react';
 
 class EmployeesAddForm extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            salary: ''
-        }
+    state = {
+        name: '',
+        salary: ''
     }
 
     onValueChange = (evt) => {
