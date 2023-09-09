@@ -18,7 +18,8 @@ const EmployeesListItem = (props) => {
         return (
             <li className={className}>
                 <span onClick={onToggleProp}
-                data-toggle="rise" className="list-group-item-label">{name}</span>
+                data-toggle="rise" className="list-group-item-label"
+                >{name}</span>
                 <input type='text'
                 onChange={(evt) => onSalaryChange(name, evt.target.value)} 
                 className="list-group-item-input" 
