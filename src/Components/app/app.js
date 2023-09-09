@@ -78,8 +78,8 @@ class App extends Component {
         this.setState({term});
     } 
 
-    onFilter = (filterType) => {
-        this.setState({filter: filterType});
+    onFilter = (filter) => {
+        this.setState({filter});
     }
 
     filterPost = (items, filter) => {

@@ -6,11 +6,6 @@ const AppFilter = (props) => {
     {name: 'rise', label: 'На повышение'},
     {name: 'salary', label: ' З/П больше 1000$'}
   ]
-  
-  const onFilter = (evt) => {
-    const filter = evt.target.getAttribute('data-filter');
-    props.onFilter(filter);
-  }
 
   const buttons = buttonsData.map(({name, label}) => {
     const active = props.filter === name;
@@ -19,7 +14,7 @@ const AppFilter = (props) => {
     return (
       <button 
         className={`btn ${clazz}`}
-        onClick={onFilter}
+        onClick={() => props.onFilter(name)}
         type='button'
         key={name}
         data-filter={name}>
