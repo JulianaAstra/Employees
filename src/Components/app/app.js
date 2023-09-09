@@ -9,6 +9,10 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 import { v4 as uuidv4 } from 'uuid';
 import './app.css'
 
+const FilterType = {
+    RISE: 'rise',
+    SALARY: 'salary'
+}
 class App extends Component {
 
     constructor(props) {
@@ -19,7 +23,8 @@ class App extends Component {
                 {name: 'Ann C.', salary: 5000, id: 2, increase: true, rise: false},
                 {name: 'Kate R.', salary: 1700, id: 3, increase: false, rise: true}
             ],
-            term: ''
+            term: '',
+            filter: 'all'
         }
     }
     
@@ -73,16 +78,33 @@ class App extends Component {
         this.setState({term});
     } 
 
+    onFilter = (filterType) => {
+        this.setState({filter: filterType});
+    }
+
+    filterPost = (items, filter) => {
+        switch (filter) {
+            case FilterType.RISE:
+                return items.filter(item => item.rise);
+            case FilterType.SALARY:
+                return items.filter(item => item.salary > 1000)    ;
+            default: 
+                return items;
+        }
+    }
+
     render() {
-        const {data, term} = this.state;
-        const visibleData = this.searchEmp(data, term);
+        const {data, term, filter} = this.state;
+        const visibleData = this.filterPost(this.searchEmp(data, term), filter);
 
         return (
             <div className='app'>
                 <AppInfo data={data}/>
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-                    <AppFilter />
+                    <AppFilter 
+                        onFilter={this.onFilter}
+                        filter={this.state.filter}/>
                 </div>
                 <EmployeesList 
                     data={visibleData}
